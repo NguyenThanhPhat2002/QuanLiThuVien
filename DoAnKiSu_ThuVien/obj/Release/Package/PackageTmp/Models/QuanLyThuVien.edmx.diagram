@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3c16fb4983634ffa854c8b87d379f45a" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="QuanLyThuVienModel.BanSaoTaiLieu" Width="1.5" PointX="9.875" PointY="4.75" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.ChiTietPhieuMuon" Width="1.5" PointX="11.875" PointY="4.625" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.ChucNangCon" Width="1.5" PointX="5.25" PointY="25.75" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.ChuDe" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.DangKyDocGia" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.DocGia" Width="1.5" PointX="5.25" PointY="17.625" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.DoiTuongDocGia" Width="1.5" PointX="3" PointY="18.375" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.KeSach" Width="1.5" PointX="7.5" PointY="1.75" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.LoaiTaiLieu" Width="1.5" PointX="0.5" PointY="6.875" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.NhanVien" Width="1.5" PointX="5.25" PointY="12.875" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.NhaXuatBan" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.NhomNguoiDung" Width="1.5" PointX="5.25" PointY="22.875" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.PhanHe" Width="1.5" PointX="3" PointY="26.125" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.PhanQuyen" Width="1.5" PointX="7.5" PointY="22.875" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.PhienBanTaiLieu" Width="1.5" PointX="8.25" PointY="4.375" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon" Width="1.5" PointX="7.5" PointY="15.875" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TacGia" Width="1.5" PointX="6.25" PointY="8.75" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TaiKhoanNoiBo" Width="1.5" PointX="7.5" PointY="12.75" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TaiLieu" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.Tang" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TheThuVien" Width="1.5" PointX="10.5" PointY="16" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__BanSaoTai__ID_Ph__5629CD9C" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__BanSaoTai__ID_Ta__571DF1D5" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__ChiTietPhi__MaTL__5FB337D6" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__ChiTietPh__ID_Ph__5EBF139D" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__ChucNangC__ID_Ph__66603565" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__PhanQuyen__ID_Ch__6D0D32F4" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__TaiLieu__ChuDe__4BAC3F29" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__DocGia__ID_DoiTu__398D8EEE" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__PhieuMuon__MaDoc__5AEE82B9" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__TheThuVie__MaDoc__4316F928" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__KeSach__Tang__286302EC" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__TaiLieu__LoaiTai__4AB81AF0" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__PhieuMuon__ID_Nh__5BE2A6F2" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__TaiKhoanN__ID_NV__6FE99F9F" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__TheThuVie__Nguoi__4222D4EF" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__PhienBanT__ID_Nh__52593CB8" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__PhanQuyen__MaNho__6C190EBB" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__TaiKhoanN__MaNho__70DDC3D8" />
+        <AssociationConnector Association="QuanLyThuVienModel.FK__PhienBanT__ID_Ta__5165187F" />
+        <AssociationConnector Association="QuanLyThuVienModel.TaiLieu_TacGia" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

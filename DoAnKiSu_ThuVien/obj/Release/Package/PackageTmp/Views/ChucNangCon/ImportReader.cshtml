@@ -1,0 +1,60 @@
+﻿<style>
+    .frame-ip{
+        padding-left: 30px;
+        padding-right: 30px;
+      
+    }
+    .download-box{
+        width: 320px;
+        height: 100px;
+        margin-top: 50px;
+        background-color: #f5f6fa;
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    .frame-ip .click_file{
+        width: 850px;
+        height: 170px;
+        border: 1px dotted black;
+        margin-right: 50px;
+        margin-top: 50px;
+        vertical-align: middle;
+    }
+</style>
+@{
+    ViewBag.Title = "ImportReader";
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
+}
+
+<h5>Nhập khẩu danh sách độc giả</h5>
+<div class="d-flex justify-content-between frame-ip">
+    <div onclick="handleDownload()" class="download-box">
+        <p>Tải tệp mẫu</p>
+        <div>
+            <img src="~/Content/images/icons/IC_Download file.svg" />
+            <span style="color: #0997eb;">Tệp mẫu Excel</span>
+        </div>
+    </div>
+    <div class="click_file d-flex align-items-center flex-column">
+        <img src="~/Content/images/icons/ic_Import.jpg" />
+        <p>Kéo thả tệp vào đây hoặc nhấn để chọn file</p>
+        <div style="margin-bottom: 0; background-color: #f5f6fa" class="d-flex">
+            <img style="width: 30px; height: 30px;" src="~/Content/images/icons/ic_ToastMessage_Info.svg" />
+            <p>Tệp dữ liệu phải có dung lượng không vượt quá 5MB. Vui lòng tải tệp đúng định dạng *.xls, *.xlsx để hệ thống có thể nhận dạng thông tin tệp.</p>
+        </div>
+        <div>
+            <p>Chọn sheet nhập khẩu</p>
+            <select></select>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleDownload() {
+         window.location.href = '@Url.Action("DownloadFileReaderSample", "ChucNangCon")';
+    }
+</script>
+

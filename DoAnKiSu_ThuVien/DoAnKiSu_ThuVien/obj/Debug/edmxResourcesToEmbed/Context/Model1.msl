@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_TVModelStoreContainer" CdmEntityContainer="DB_TVEntities">
+    <EntitySetMapping Name="BienLais">
+      <EntityTypeMapping TypeName="DB_TVModel.BienLai">
+        <MappingFragment StoreEntitySet="BienLai">
+          <ScalarProperty Name="id_bien_lai" ColumnName="id_bien_lai" />
+          <ScalarProperty Name="id_doc_gia" ColumnName="id_doc_gia" />
+          <ScalarProperty Name="id_sach" ColumnName="id_sach" />
+          <ScalarProperty Name="id_ld" ColumnName="id_ld" />
+          <ScalarProperty Name="ngay_lap" ColumnName="ngay_lap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocGias">
+      <EntityTypeMapping TypeName="DB_TVModel.DocGia">
+        <MappingFragment StoreEntitySet="DocGia">
+          <ScalarProperty Name="id_doc_gia" ColumnName="id_doc_gia" />
+          <ScalarProperty Name="id_khoa_hoc" ColumnName="id_khoa_hoc" />
+          <ScalarProperty Name="MSSV" ColumnName="MSSV" />
+          <ScalarProperty Name="ho_ten_doc_gia" ColumnName="ho_ten_doc_gia" />
+          <ScalarProperty Name="ngay_sinh" ColumnName="ngay_sinh" />
+          <ScalarProperty Name="noi_sinh" ColumnName="noi_sinh" />
+          <ScalarProperty Name="lop" ColumnName="lop" />
+          <ScalarProperty Name="nam_hoc" ColumnName="nam_hoc" />
+          <ScalarProperty Name="ngay_muon" ColumnName="ngay_muon" />
+          <ScalarProperty Name="ngay_tra" ColumnName="ngay_tra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhoaHocs">
+      <EntityTypeMapping TypeName="DB_TVModel.KhoaHoc">
+        <MappingFragment StoreEntitySet="KhoaHoc">
+          <ScalarProperty Name="id_khoa_hoc" ColumnName="id_khoa_hoc" />
+          <ScalarProperty Name="ten_khoa" ColumnName="ten_khoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiSaches">
+      <EntityTypeMapping TypeName="DB_TVModel.LoaiSach">
+        <MappingFragment StoreEntitySet="LoaiSach">
+          <ScalarProperty Name="id_loai_sach" ColumnName="id_loai_sach" />
+          <ScalarProperty Name="loai_sach" ColumnName="loai_sach" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LyDoes">
+      <EntityTypeMapping TypeName="DB_TVModel.LyDo">
+        <MappingFragment StoreEntitySet="LyDo">
+          <ScalarProperty Name="id_ld" ColumnName="id_ld" />
+          <ScalarProperty Name="ten_ld" ColumnName="ten_ld" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NgonNgus">
+      <EntityTypeMapping TypeName="DB_TVModel.NgonNgu">
+        <MappingFragment StoreEntitySet="NgonNgu">
+          <ScalarProperty Name="id_ngon_ngu" ColumnName="id_ngon_ngu" />
+          <ScalarProperty Name="ten_ngon_ngu" ColumnName="ten_ngon_ngu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanViens">
+      <EntityTypeMapping TypeName="DB_TVModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="id_nhan_vien" ColumnName="id_nhan_vien" />
+          <ScalarProperty Name="ten_nhan_vien" ColumnName="ten_nhan_vien" />
+          <ScalarProperty Name="ngay_sinh" ColumnName="ngay_sinh" />
+          <ScalarProperty Name="chuc_vu" ColumnName="chuc_vu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NXBs">
+      <EntityTypeMapping TypeName="DB_TVModel.NXB">
+        <MappingFragment StoreEntitySet="NXB">
+          <ScalarProperty Name="id_NXB" ColumnName="id_NXB" />
+          <ScalarProperty Name="ten_NXB" ColumnName="ten_NXB" />
+          <ScalarProperty Name="dia_chi" ColumnName="dia_chi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuMuons">
+      <EntityTypeMapping TypeName="DB_TVModel.PhieuMuon">
+        <MappingFragment StoreEntitySet="PhieuMuon">
+          <ScalarProperty Name="id_phieu_muon" ColumnName="id_phieu_muon" />
+          <ScalarProperty Name="id_doc_gia" ColumnName="id_doc_gia" />
+          <ScalarProperty Name="id_sach" ColumnName="id_sach" />
+          <ScalarProperty Name="ngay_muon" ColumnName="ngay_muon" />
+          <ScalarProperty Name="ngay_tra" ColumnName="ngay_tra" />
+          <ScalarProperty Name="tien_phat_sinh" ColumnName="tien_phat_sinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saches">
+      <EntityTypeMapping TypeName="DB_TVModel.Sach">
+        <MappingFragment StoreEntitySet="Sach">
+          <ScalarProperty Name="id_sach" ColumnName="id_sach" />
+          <ScalarProperty Name="ten_sach" ColumnName="ten_sach" />
+          <ScalarProperty Name="id_tac_gia" ColumnName="id_tac_gia" />
+          <ScalarProperty Name="id_loai_sach" ColumnName="id_loai_sach" />
+          <ScalarProperty Name="id_ngon_ngu" ColumnName="id_ngon_ngu" />
+          <ScalarProperty Name="id_NXB" ColumnName="id_NXB" />
+          <ScalarProperty Name="id_vi_tri" ColumnName="id_vi_tri" />
+          <ScalarProperty Name="ngay_nhap" ColumnName="ngay_nhap" />
+          <ScalarProperty Name="tom_tat" ColumnName="tom_tat" />
+          <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+          <ScalarProperty Name="so_luong_con" ColumnName="so_luong_con" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TacGias">
+      <EntityTypeMapping TypeName="DB_TVModel.TacGia">
+        <MappingFragment StoreEntitySet="TacGia">
+          <ScalarProperty Name="id_tac_gia" ColumnName="id_tac_gia" />
+          <ScalarProperty Name="ten_tac_gia" ColumnName="ten_tac_gia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongKes">
+      <EntityTypeMapping TypeName="DB_TVModel.ThongKe">
+        <MappingFragment StoreEntitySet="ThongKe">
+          <ScalarProperty Name="id_thong_ke" ColumnName="id_thong_ke" />
+          <ScalarProperty Name="ten_thong_ke" ColumnName="ten_thong_ke" />
+          <ScalarProperty Name="id_nhan_vien" ColumnName="id_nhan_vien" />
+          <ScalarProperty Name="ngay_thong_ke" ColumnName="ngay_thong_ke" />
+          <ScalarProperty Name="id_sach" ColumnName="id_sach" />
+          <ScalarProperty Name="so_luong" ColumnName="so_luong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViTris">
+      <EntityTypeMapping TypeName="DB_TVModel.ViTri">
+        <MappingFragment StoreEntitySet="ViTri">
+          <ScalarProperty Name="id_vi_tri" ColumnName="id_vi_tri" />
+          <ScalarProperty Name="khu" ColumnName="khu" />
+          <ScalarProperty Name="ke" ColumnName="ke" />
+          <ScalarProperty Name="ngan" ColumnName="ngan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

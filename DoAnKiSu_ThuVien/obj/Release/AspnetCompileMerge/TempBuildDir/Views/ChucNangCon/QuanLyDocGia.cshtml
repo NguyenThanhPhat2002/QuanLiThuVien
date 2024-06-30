@@ -1,0 +1,278 @@
+﻿
+@{
+    ViewBag.Title = "TimKiemDocGia";
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
+}
+<style>
+    .alert {
+        position: fixed;
+        top: 20px;
+        right: -300px; /* Bắt đầu ẩn ngoài màn hình */
+        z-index: 9999;
+        padding: 20px;
+        background-color: #f44336; /* Màu nền của thông báo */
+        color: white;
+        transition: right 0.5s ease-in-out; /* Hiệu ứng khi thay đổi vị trí */
+    }
+
+        .alert.show {
+            right: 20px; /* Hiển thị từ góc phải bên trên */
+        }
+
+    .alert-primary {
+        background-color: #007aff;
+        color: #fff;
+    }
+    .type-reader {
+        display: flex;
+        background-color: #f6f6f6;
+        padding-left: 0;
+    }
+    .type-reader li{
+        list-style-type: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .type-reader li:hover{
+        color: #007aff;
+    }
+    .item-active{
+        color: #007aff;
+        border-top: 1px groove #007aff;
+    }
+</style>
+<div style="margin-bottom: 20px;background-color: #1877f1; height:60px;width: 100%;color: white; display: flex; align-items: center ;font-size: 20px; padding-left: 20px">
+    QUẢN LÝ ĐỘC GIẢ
+</div>
+<ul id="type-reader" class="type-reader">
+    <li class="item-active">Sinh viên, học viên</li>
+    <li>Giảng viên, viên chức trong trường</li>
+    <li>Giảng viên thỉnh giảng</li>
+    <li>Độc giả ngoài trường</li>
+</ul>
+<div style="padding-right: 30px;" class="d-flex justify-content-end">
+    <button class="btn btn-primary">
+        Thêm độc giả
+    </button>
+    <button onclick="navigateImportFile()" style="margin-left: 20px;" class="btn btn-secondary">Nhập khẩu</button>
+    <button style="margin-left: 20px;" class="btn btn-secondary">Xuất khẩu</button>
+</div>
+<table id="tb_rd" style="margin-top: 20px" class="table table-bordered">
+    <thead style="width: fit-content">
+        <tr style="text-align: center">
+            <th colspan="8" scope="col">Thông tin độc giả</th>
+            <th scope="col">Thông tin thẻ </th>
+        </tr>
+        <tr style="text-align: center">
+            <th scope="col">Mã độc giả</th>
+            <th scope="col">Họ tên </th>
+            <th scope="col">Đơn vị</th>
+            <th scope="col">Giới tính</th>
+            <th scope="col">Email</th>
+            <th scope="col">Điện thoại</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Đối tượng</th>
+            <th scope="col">Trạng thái</th>
+           
+        </tr>
+    </thead>
+    <tbody style="width: fit-content">
+        
+
+    </tbody>
+</table>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('/ChucNangCon/GetReaderByType', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ loaiDoiTuong: "Sinh viên, học viên" })
+        })
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(item => {
+                    var row = document.createElement('tr');
+                    var maDocGiaCell = document.createElement('td');
+                    maDocGiaCell.textContent = item.MaDocGia;
+                    row.appendChild(maDocGiaCell);
+                    var tenDocGiaCell = document.createElement('td');
+                    tenDocGiaCell.textContent = item.TenDocGia;
+                    row.appendChild(tenDocGiaCell);
+                    var donViCell = document.createElement('td');
+                    donViCell.textContent = item.DonVi;
+                    row.appendChild(donViCell);
+                    var gioiTinhCell = document.createElement('td');
+                    gioiTinhCell.textContent = item.GioiTinh;
+                    row.appendChild(gioiTinhCell);
+                    var emailCell = document.createElement('td');
+                    emailCell.textContent = item.Email;
+                    row.appendChild(emailCell);
+
+                    var phoneCell = document.createElement('td');
+                    phoneCell.textContent = item.DienThoai;
+                    row.appendChild(phoneCell);
+
+                    var AddressCell = document.createElement('td');
+                    AddressCell.textContent = item.DiaChi;
+                    row.appendChild(AddressCell);
+
+                    var doiTuongCell = document.createElement('td');
+                    doiTuongCell.textContent = item.TenDoiTuong;
+                    row.appendChild(doiTuongCell);
+
+
+
+                    var trangThaiCell = document.createElement('td');
+                    trangThaiCell.textContent = item.TrangThai;
+                    row.appendChild(trangThaiCell);
+                    var tbody = document.querySelector('#tb_rd tbody');
+                    tbody.appendChild(row);
+                })
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    function handleSearch() {
+        var category = document.getElementById("category_search").value
+        var input = document.getElementById("input_search").value
+        if (input == '')
+            this.showMessage('Chưa nhập thông tin tìm kiếm')
+        else {
+            fetch('/ChucNangCon/SearchReader', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ category: category, input: input })
+            })
+                .then(response => response.json())
+                .then(data => {
+
+                    data.forEach(item => {
+                        var row = document.createElement('tr');
+                        var maDocGiaCell = document.createElement('td');
+                        maDocGiaCell.textContent = item.MaDocGia;
+                        row.appendChild(maDocGiaCell);
+                        var tenDocGiaCell = document.createElement('td');
+                        tenDocGiaCell.textContent = item.TenDocGia;
+                        row.appendChild(tenDocGiaCell);
+                        var donViCell = document.createElement('td');
+                        donViCell.textContent = item.DonVi;
+                        row.appendChild(donViCell);
+                        var gioiTinhCell = document.createElement('td');
+                        gioiTinhCell.textContent = item.GioiTinh;
+                        row.appendChild(gioiTinhCell);
+                        var emailCell = document.createElement('td');
+                        emailCell.textContent = item.Email;
+                        row.appendChild(emailCell);
+
+                        var phoneCell = document.createElement('td');
+                        phoneCell.textContent = item.DienThoai;
+                        row.appendChild(phoneCell);
+
+
+                        var doiTuongCell = document.createElement('td');
+                        doiTuongCell.textContent = item.TenDoiTuong;
+                        row.appendChild(doiTuongCell);
+                        var trangThaiCell = document.createElement('td');
+                        trangThaiCell.textContent = item.TrangThai;
+                        row.appendChild(trangThaiCell);
+                        var tbody = document.querySelector('#tb_rd tbody');
+                        tbody.appendChild(row);
+                    })
+
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }
+    function navigateImportFile() {
+         window.location.href = '@Url.Action("ImportReader", "ChucNangCon")';
+    }
+    function showMessage(content) {
+        const alertDiv = document.createElement('div');
+        alertDiv.classList.add('alert', 'alert-primary', 'slide-in-top', 'show');
+        alertDiv.setAttribute('role', 'alert');
+        alertDiv.innerText = content;
+        var resultDiv = document.querySelector('.header .header-topbar');
+        resultDiv.appendChild(alertDiv);
+
+        // Tự đóng thông báo sau 3 giây
+        setTimeout(function () {
+            alertDiv.classList.remove('show');
+            setTimeout(function () {
+                resultDiv.removeChild(alertDiv);
+            }, 500); // Chờ hiệu ứng kết thúc trước khi xóa khỏi DOM
+        }, 3000);
+    }
+    const listItems = document.querySelectorAll('#type-reader li');
+
+    listItems.forEach(item => {
+        // Thêm sự kiện click cho mỗi phần tử li
+        item.addEventListener('click', function () {
+            listItems.forEach(li => li.classList.remove('item-active'));
+            this.classList.add('item-active');
+            type = this.innerText;
+            fetch('/ChucNangCon/GetReaderByType', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ loaiDoiTuong: type })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        var tbody = document.querySelector('#tb_rd tbody');
+                        tbody.innerHTML = ''
+                        tbody.innerHTML = "Không có dữ liệu"
+                        return;
+                    }
+                    var tbody = document.querySelector('#tb_rd tbody');
+                    tbody.innerHTML = ''
+                    data.forEach(item => {
+                        var row = document.createElement('tr');
+                        var maDocGiaCell = document.createElement('td');
+                        maDocGiaCell.textContent = item.MaDocGia;
+                        row.appendChild(maDocGiaCell);
+                        var tenDocGiaCell = document.createElement('td');
+                        tenDocGiaCell.textContent = item.TenDocGia;
+                        row.appendChild(tenDocGiaCell);
+                        var donViCell = document.createElement('td');
+                        donViCell.textContent = item.DonVi;
+                        row.appendChild(donViCell);
+                        var gioiTinhCell = document.createElement('td');
+                        gioiTinhCell.textContent = item.GioiTinh;
+                        row.appendChild(gioiTinhCell);
+                        var emailCell = document.createElement('td');
+                        emailCell.textContent = item.Email;
+                        row.appendChild(emailCell);
+
+                        var phoneCell = document.createElement('td');
+                        phoneCell.textContent = item.DienThoai;
+                        row.appendChild(phoneCell);
+
+                        var AddressCell = document.createElement('td');
+                        AddressCell.textContent = item.DiaChi;
+                        row.appendChild(AddressCell);
+
+                        var doiTuongCell = document.createElement('td');
+                        doiTuongCell.textContent = item.TenDoiTuong;
+                        row.appendChild(doiTuongCell);
+
+
+
+                        var trangThaiCell = document.createElement('td');
+                        trangThaiCell.textContent = item.TrangThai;
+                        row.appendChild(trangThaiCell);
+
+                        tbody.appendChild(row);
+                    })
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
+
+</script>

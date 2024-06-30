@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_TVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BienLai">
+    <Key>
+      <PropertyRef Name="id_bien_lai" />
+      <PropertyRef Name="id_doc_gia" />
+      <PropertyRef Name="id_sach" />
+      <PropertyRef Name="id_ld" />
+    </Key>
+    <Property Name="id_bien_lai" Type="int" Nullable="false" />
+    <Property Name="id_doc_gia" Type="int" Nullable="false" />
+    <Property Name="id_sach" Type="int" Nullable="false" />
+    <Property Name="id_ld" Type="int" Nullable="false" />
+    <Property Name="ngay_lap" Type="date" />
+  </EntityType>
+  <EntityType Name="DocGia">
+    <Key>
+      <PropertyRef Name="id_doc_gia" />
+    </Key>
+    <Property Name="id_doc_gia" Type="int" Nullable="false" />
+    <Property Name="id_khoa_hoc" Type="int" />
+    <Property Name="MSSV" Type="char" MaxLength="20" />
+    <Property Name="ho_ten_doc_gia" Type="nvarchar(max)" />
+    <Property Name="ngay_sinh" Type="date" />
+    <Property Name="noi_sinh" Type="nvarchar(max)" />
+    <Property Name="lop" Type="char" MaxLength="10" />
+    <Property Name="nam_hoc" Type="int" />
+    <Property Name="ngay_muon" Type="date" />
+    <Property Name="ngay_tra" Type="date" />
+  </EntityType>
+  <EntityType Name="KhoaHoc">
+    <Key>
+      <PropertyRef Name="id_khoa_hoc" />
+    </Key>
+    <Property Name="id_khoa_hoc" Type="int" Nullable="false" />
+    <Property Name="ten_khoa" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LoaiSach">
+    <Key>
+      <PropertyRef Name="id_loai_sach" />
+    </Key>
+    <Property Name="id_loai_sach" Type="int" Nullable="false" />
+    <Property Name="loai_sach" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="avatar" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="LyDo">
+    <Key>
+      <PropertyRef Name="id_ld" />
+    </Key>
+    <Property Name="id_ld" Type="int" Nullable="false" />
+    <Property Name="ten_ld" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="NgonNgu">
+    <Key>
+      <PropertyRef Name="id_ngon_ngu" />
+    </Key>
+    <Property Name="id_ngon_ngu" Type="int" Nullable="false" />
+    <Property Name="ten_ngon_ngu" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="id_nhan_vien" />
+    </Key>
+    <Property Name="id_nhan_vien" Type="int" Nullable="false" />
+    <Property Name="ten_nhan_vien" Type="nvarchar" MaxLength="250" />
+    <Property Name="ngay_sinh" Type="date" />
+    <Property Name="chuc_vu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NXB">
+    <Key>
+      <PropertyRef Name="id_NXB" />
+    </Key>
+    <Property Name="id_NXB" Type="int" Nullable="false" />
+    <Property Name="ten_NXB" Type="nvarchar" MaxLength="255" />
+    <Property Name="dia_chi" Type="nvarchar" MaxLength="255" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="PhieuMuon">
+    <Key>
+      <PropertyRef Name="id_phieu_muon" />
+      <PropertyRef Name="id_doc_gia" />
+      <PropertyRef Name="id_sach" />
+    </Key>
+    <Property Name="id_phieu_muon" Type="int" Nullable="false" />
+    <Property Name="id_doc_gia" Type="int" Nullable="false" />
+    <Property Name="id_sach" Type="int" Nullable="false" />
+    <Property Name="ngay_muon" Type="date" />
+    <Property Name="ngay_tra" Type="date" />
+    <Property Name="tien_phat_sinh" Type="float" />
+  </EntityType>
+  <EntityType Name="Sach">
+    <Key>
+      <PropertyRef Name="id_sach" />
+    </Key>
+    <Property Name="id_sach" Type="int" Nullable="false" />
+    <Property Name="ten_sach" Type="nvarchar" MaxLength="255" />
+    <Property Name="id_tac_gia" Type="int" />
+    <Property Name="id_loai_sach" Type="int" />
+    <Property Name="id_ngon_ngu" Type="int" />
+    <Property Name="id_NXB" Type="int" />
+    <Property Name="id_vi_tri" Type="int" />
+    <Property Name="ngay_nhap" Type="date" Nullable="false" />
+    <Property Name="tom_tat" Type="nvarchar(max)" />
+    <Property Name="trang_thai" Type="nvarchar" MaxLength="50" />
+    <Property Name="so_luong_con" Type="int" />
+    <Property Name="price" Type="float" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TacGia">
+    <Key>
+      <PropertyRef Name="id_tac_gia" />
+    </Key>
+    <Property Name="id_tac_gia" Type="int" Nullable="false" />
+    <Property Name="ten_tac_gia" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ThongKe">
+    <Key>
+      <PropertyRef Name="id_thong_ke" />
+    </Key>
+    <Property Name="id_thong_ke" Type="int" Nullable="false" />
+    <Property Name="ten_thong_ke" Type="nvarchar" MaxLength="255" />
+    <Property Name="id_nhan_vien" Type="int" />
+    <Property Name="ngay_thong_ke" Type="date" />
+    <Property Name="id_sach" Type="int" />
+    <Property Name="so_luong" Type="int" />
+  </EntityType>
+  <EntityType Name="ViTri">
+    <Key>
+      <PropertyRef Name="id_vi_tri" />
+    </Key>
+    <Property Name="id_vi_tri" Type="int" Nullable="false" />
+    <Property Name="khu" Type="varchar" MaxLength="50" />
+    <Property Name="ke" Type="varchar" MaxLength="50" />
+    <Property Name="ngan" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__BienLai__id_doc___4E88ABD4">
+    <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
+    <End Role="BienLai" Type="Self.BienLai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocGia">
+        <PropertyRef Name="id_doc_gia" />
+      </Principal>
+      <Dependent Role="BienLai">
+        <PropertyRef Name="id_doc_gia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BienLai__id_ld__4F7CD00D">
+    <End Role="LyDo" Type="Self.LyDo" Multiplicity="1" />
+    <End Role="BienLai" Type="Self.BienLai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LyDo">
+        <PropertyRef Name="id_ld" />
+      </Principal>
+      <Dependent Role="BienLai">
+        <PropertyRef Name="id_ld" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BienLai__id_sach__5070F446">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+    <End Role="BienLai" Type="Self.BienLai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="id_sach" />
+      </Principal>
+      <Dependent Role="BienLai">
+        <PropertyRef Name="id_sach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DocGia__id_khoa___5165187F">
+    <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1" />
+    <End Role="DocGia" Type="Self.DocGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaHoc">
+        <PropertyRef Name="id_khoa_hoc" />
+      </Principal>
+      <Dependent Role="DocGia">
+        <PropertyRef Name="id_khoa_hoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuMuon__id_do__52593CB8">
+    <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
+    <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocGia">
+        <PropertyRef Name="id_doc_gia" />
+      </Principal>
+      <Dependent Role="PhieuMuon">
+        <PropertyRef Name="id_doc_gia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuMuon__id_sa__534D60F1">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+    <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="id_sach" />
+      </Principal>
+      <Dependent Role="PhieuMuon">
+        <PropertyRef Name="id_sach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sach__id_loai_sa__5441852A">
+    <End Role="LoaiSach" Type="Self.LoaiSach" Multiplicity="0..1" />
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSach">
+        <PropertyRef Name="id_loai_sach" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="id_loai_sach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sach__id_ngon_ng__5535A963">
+    <End Role="NgonNgu" Type="Self.NgonNgu" Multiplicity="0..1" />
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NgonNgu">
+        <PropertyRef Name="id_ngon_ngu" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="id_ngon_ngu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sach__id_NXB__5629CD9C">
+    <End Role="NXB" Type="Self.NXB" Multiplicity="0..1" />
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="id_NXB" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="id_NXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sach__id_tac_gia__571DF1D5">
+    <End Role="TacGia" Type="Self.TacGia" Multiplicity="0..1" />
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TacGia">
+        <PropertyRef Name="id_tac_gia" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="id_tac_gia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sach__id_vi_tri__5812160E">
+    <End Role="ViTri" Type="Self.ViTri" Multiplicity="0..1" />
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ViTri">
+        <PropertyRef Name="id_vi_tri" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="id_vi_tri" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongKe__id_nhan__59063A47">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="ThongKe" Type="Self.ThongKe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="id_nhan_vien" />
+      </Principal>
+      <Dependent Role="ThongKe">
+        <PropertyRef Name="id_nhan_vien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongKe__id_sach__59FA5E80">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+    <End Role="ThongKe" Type="Self.ThongKe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="id_sach" />
+      </Principal>
+      <Dependent Role="ThongKe">
+        <PropertyRef Name="id_sach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_TVModelStoreContainer">
+    <EntitySet Name="BienLai" EntityType="Self.BienLai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocGia" EntityType="Self.DocGia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhoaHoc" EntityType="Self.KhoaHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiSach" EntityType="Self.LoaiSach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LyDo" EntityType="Self.LyDo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NgonNgu" EntityType="Self.NgonNgu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NXB" EntityType="Self.NXB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuMuon" EntityType="Self.PhieuMuon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TacGia" EntityType="Self.TacGia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongKe" EntityType="Self.ThongKe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ViTri" EntityType="Self.ViTri" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BienLai__id_doc___4E88ABD4" Association="Self.FK__BienLai__id_doc___4E88ABD4">
+      <End Role="DocGia" EntitySet="DocGia" />
+      <End Role="BienLai" EntitySet="BienLai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BienLai__id_ld__4F7CD00D" Association="Self.FK__BienLai__id_ld__4F7CD00D">
+      <End Role="LyDo" EntitySet="LyDo" />
+      <End Role="BienLai" EntitySet="BienLai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BienLai__id_sach__5070F446" Association="Self.FK__BienLai__id_sach__5070F446">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="BienLai" EntitySet="BienLai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DocGia__id_khoa___5165187F" Association="Self.FK__DocGia__id_khoa___5165187F">
+      <End Role="KhoaHoc" EntitySet="KhoaHoc" />
+      <End Role="DocGia" EntitySet="DocGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuMuon__id_do__52593CB8" Association="Self.FK__PhieuMuon__id_do__52593CB8">
+      <End Role="DocGia" EntitySet="DocGia" />
+      <End Role="PhieuMuon" EntitySet="PhieuMuon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuMuon__id_sa__534D60F1" Association="Self.FK__PhieuMuon__id_sa__534D60F1">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="PhieuMuon" EntitySet="PhieuMuon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sach__id_loai_sa__5441852A" Association="Self.FK__Sach__id_loai_sa__5441852A">
+      <End Role="LoaiSach" EntitySet="LoaiSach" />
+      <End Role="Sach" EntitySet="Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sach__id_ngon_ng__5535A963" Association="Self.FK__Sach__id_ngon_ng__5535A963">
+      <End Role="NgonNgu" EntitySet="NgonNgu" />
+      <End Role="Sach" EntitySet="Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sach__id_NXB__5629CD9C" Association="Self.FK__Sach__id_NXB__5629CD9C">
+      <End Role="NXB" EntitySet="NXB" />
+      <End Role="Sach" EntitySet="Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sach__id_tac_gia__571DF1D5" Association="Self.FK__Sach__id_tac_gia__571DF1D5">
+      <End Role="TacGia" EntitySet="TacGia" />
+      <End Role="Sach" EntitySet="Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sach__id_vi_tri__5812160E" Association="Self.FK__Sach__id_vi_tri__5812160E">
+      <End Role="ViTri" EntitySet="ViTri" />
+      <End Role="Sach" EntitySet="Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongKe__id_nhan__59063A47" Association="Self.FK__ThongKe__id_nhan__59063A47">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="ThongKe" EntitySet="ThongKe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongKe__id_sach__59FA5E80" Association="Self.FK__ThongKe__id_sach__59FA5E80">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="ThongKe" EntitySet="ThongKe" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
